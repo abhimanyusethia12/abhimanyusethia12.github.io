@@ -1,0 +1,30 @@
+
+let changeUser = document.querySelector('button.user');
+let myHeading = document.querySelector('h2.personalised-hello');
+
+
+function setUserName() {
+    let myName = prompt('Please enter your name.');
+    if(!myName || myName === null){
+        setUserName();
+    }else {
+        localStorage.setItem('name', myName);
+        myHeading.textContent = 'Hello ' + myName;    
+    }
+}
+
+if(!localStorage.getItem('name')) {
+  setUserName();
+} else {
+  let storedName = localStorage.getItem('name');
+  myHeading.textContent = 'Hello ' + storedName + '!';
+}
+
+changeUser.onclick = function() {
+    setUserName();
+}
+
+
+let myImage = document.querySelector('img');
+
+
